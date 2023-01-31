@@ -1,23 +1,28 @@
 version: '2.1'
-
 services:
   product:
     build: microservices/product-service
     mem_limit: 350m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - mynetwork
 
   recommendation:
     build: microservices/recommendation-service
     mem_limit: 350m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - mynetwork
 
   review:
     build: microservices/review-service
     mem_limit: 350m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - mynetwork
 
   product-composite:
     build: microservices/product-composite-service
@@ -26,3 +31,9 @@ services:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
