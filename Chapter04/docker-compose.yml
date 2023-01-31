@@ -6,7 +6,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
-      - mynetwork
+      - network-01
 
   recommendation:
     build: microservices/recommendation-service
@@ -14,7 +14,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
-      - mynetwork
+      - network-01
 
   review:
     build: microservices/review-service
@@ -22,7 +22,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
-      - mynetwork
+      - network-01
 
   product-composite:
     build: microservices/product-composite-service
@@ -32,8 +32,8 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
-      - mynetwork
+      - network-01
 
 networks:
-  mynetwork:
+  network-01:
     driver: bridge
